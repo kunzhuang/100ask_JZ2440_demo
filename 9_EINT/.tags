@@ -1,0 +1,78 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_start	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\head.S	/^_start:$/;"	label	line:9
+Reset	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\head.S	/^Reset:                  $/;"	label	line:10
+on_sdram	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\head.S	/^on_sdram:$/;"	label	line:17
+halt_loop	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\head.S	/^halt_loop:$/;"	label	line:21
+disable_watch_dog	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\init.c	/^void disable_watch_dog(void)$/;"	function	line:15	signature:(void)
+S3C2410_MPLL_200MHZ	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\init.c	/^#define S3C2410_MPLL_200MHZ /;"	macro	line:20	file:
+S3C2440_MPLL_200MHZ	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\init.c	/^#define S3C2440_MPLL_200MHZ /;"	macro	line:21	file:
+clock_init	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\init.c	/^void clock_init(void)$/;"	function	line:32	signature:(void)
+memsetup	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\init.c	/^void memsetup(void)$/;"	function	line:58	signature:(void)
+copy_steppingstone_to_sdram	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\init.c	/^void copy_steppingstone_to_sdram(void)$/;"	function	line:87	signature:(void)
+main	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\main.c	/^int main()$/;"	function	line:3
+WTCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define     WTCON /;"	macro	line:2
+MEM_CTL_BASE	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define     MEM_CTL_BASE /;"	macro	line:5
+SDRAM_BASE	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define     SDRAM_BASE /;"	macro	line:6
+NFCONF	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define NFCONF /;"	macro	line:9
+NFCMD	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define NFCMD /;"	macro	line:10
+NFADDR	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define NFADDR /;"	macro	line:11
+NFDATA	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define NFDATA /;"	macro	line:12
+NFSTAT	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define NFSTAT /;"	macro	line:13
+GPBCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPBCON /;"	macro	line:16
+GPBDAT	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPBDAT /;"	macro	line:17
+GPFCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPFCON /;"	macro	line:19
+GPFDAT	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPFDAT /;"	macro	line:20
+GPFUP	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPFUP /;"	macro	line:21
+GPGCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPGCON /;"	macro	line:23
+GPGDAT	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPGDAT /;"	macro	line:24
+GPGUP	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPGUP /;"	macro	line:25
+GPHCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPHCON /;"	macro	line:27
+GPHDAT	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPHDAT /;"	macro	line:28
+GPHUP	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GPHUP /;"	macro	line:29
+ULCON0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define ULCON0 /;"	macro	line:34
+UCON0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define UCON0 /;"	macro	line:35
+UFCON0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define UFCON0 /;"	macro	line:36
+UMCON0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define UMCON0 /;"	macro	line:37
+UTRSTAT0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define UTRSTAT0 /;"	macro	line:38
+UTXH0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define UTXH0 /;"	macro	line:39
+URXH0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define URXH0 /;"	macro	line:40
+UBRDIV0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define UBRDIV0 /;"	macro	line:41
+SRCPND	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define SRCPND /;"	macro	line:45
+INTMOD	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define INTMOD /;"	macro	line:46
+INTMSK	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define INTMSK /;"	macro	line:47
+PRIORITY	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define PRIORITY /;"	macro	line:48
+INTPND	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define INTPND /;"	macro	line:49
+INTOFFSET	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define INTOFFSET /;"	macro	line:50
+SUBSRCPND	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define SUBSRCPND /;"	macro	line:51
+INTSUBMSK	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define INTSUBMSK /;"	macro	line:52
+EINTMASK	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define EINTMASK /;"	macro	line:55
+EINTPEND	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define EINTPEND /;"	macro	line:56
+LOCKTIME	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	LOCKTIME	/;"	macro	line:59
+MPLLCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	MPLLCON	/;"	macro	line:60
+UPLLCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	UPLLCON	/;"	macro	line:61
+CLKCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	CLKCON	/;"	macro	line:62
+CLKSLOW	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	CLKSLOW	/;"	macro	line:63
+CLKDIVN	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	CLKDIVN	/;"	macro	line:64
+TCFG0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	TCFG0	/;"	macro	line:68
+TCFG1	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	TCFG1	/;"	macro	line:69
+TCON	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	TCON	/;"	macro	line:70
+TCNTB0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	TCNTB0	/;"	macro	line:71
+TCMPB0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	TCMPB0	/;"	macro	line:72
+TCNTO0	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define	TCNTO0	/;"	macro	line:73
+GSTATUS1	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\s3c24xx.h	/^#define GSTATUS1 /;"	macro	line:75
+TXD0READY	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^#define TXD0READY /;"	macro	line:4	file:
+RXD0READY	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^#define RXD0READY /;"	macro	line:5	file:
+PCLK	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^#define PCLK /;"	macro	line:7	file:
+UART_CLK	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^#define UART_CLK /;"	macro	line:8	file:
+UART_BAUD_RATE	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^#define UART_BAUD_RATE /;"	macro	line:9	file:
+UART_BRD	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^#define UART_BRD /;"	macro	line:10	file:
+uart0_init	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^void uart0_init(void)$/;"	function	line:16	signature:(void)
+putc	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^void putc(unsigned char c)$/;"	function	line:31	signature:(unsigned char c)
+getc	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^unsigned char getc(void)$/;"	function	line:43	signature:(void)
+isDigit	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^int isDigit(unsigned char c)$/;"	function	line:55	signature:(unsigned char c)
+isLetter	Z:\Share\movtemp\NEW\ARMLinux\TestCode\2019Oct\serial.c	/^int isLetter(unsigned char c)$/;"	function	line:66	signature:(unsigned char c)

@@ -1,0 +1,14 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+_start	Z:\Share\movtemp\NEW\ARMLinux\TestCode\7_Undefined_exception\start.S	/^_start:$/;"	label	line:4
+vector_base_udef_excp	Z:\Share\movtemp\NEW\ARMLinux\TestCode\7_Undefined_exception\start.S	/^vector_base_udef_excp: @ SDRAM optimization$/;"	label	line:11
+udef_excp	Z:\Share\movtemp\NEW\ARMLinux\TestCode\7_Undefined_exception\start.S	/^udef_excp:$/;"	label	line:14
+udef_excp_string	Z:\Share\movtemp\NEW\ARMLinux\TestCode\7_Undefined_exception\start.S	/^udef_excp_string:$/;"	label	line:38
+reset	Z:\Share\movtemp\NEW\ARMLinux\TestCode\7_Undefined_exception\start.S	/^reset:$/;"	label	line:43
+uart0init	Z:\Share\movtemp\NEW\ARMLinux\TestCode\7_Undefined_exception\start.S	/^uart0init:$/;"	label	line:102
+undef_code	Z:\Share\movtemp\NEW\ARMLinux\TestCode\7_Undefined_exception\start.S	/^undef_code:$/;"	label	line:107
+halt	Z:\Share\movtemp\NEW\ARMLinux\TestCode\7_Undefined_exception\start.S	/^halt:$/;"	label	line:115

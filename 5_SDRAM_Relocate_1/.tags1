@@ -1,0 +1,13 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+hex_tab	Z:\Share\movtemp\NEW\ARMLinux\TestCode\my_printf\my_printf.c	/^unsigned char hex_tab[]={'0','1','2','3','4','5','6','7',\\$/;"	variable	line:3
+out_c	Z:\Share\movtemp\NEW\ARMLinux\TestCode\my_printf\my_printf.c	/^static int out_c(int c) \/\/Pring char$/;"	function	line:6	file:	signature:(int c)
+out_s	Z:\Share\movtemp\NEW\ARMLinux\TestCode\my_printf\my_printf.c	/^static int out_s (const char *s) \/\/Pring string$/;"	function	line:12	file:	signature:(const char *s)
+out_num	Z:\Share\movtemp\NEW\ARMLinux\TestCode\my_printf\my_printf.c	/^static int out_num(long n, int base,char lead,int maxwidth)$/;"	function	line:19	file:	signature:(long n, int base,char lead,int maxwidth)
+my_va_printf	Z:\Share\movtemp\NEW\ARMLinux\TestCode\my_printf\my_printf.c	/^static int my_va_printf(const char *fmt, va_list ap)$/;"	function	line:54	file:	signature:(const char *fmt, va_list ap)
+my_printf	Z:\Share\movtemp\NEW\ARMLinux\TestCode\my_printf\my_printf.c	/^int my_printf(const char *fmt, ...)$/;"	function	line:100	signature:(const char *fmt, ...)
+my_printf_test	Z:\Share\movtemp\NEW\ARMLinux\TestCode\my_printf\my_printf.c	/^int my_printf_test(void)$/;"	function	line:111	signature:(void)
