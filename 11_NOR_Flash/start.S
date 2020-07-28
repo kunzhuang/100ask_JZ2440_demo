@@ -1,0 +1,193 @@
+.text
+.global _start
+
+_start:
+	b reset 		@ Vector 0: reset, relative jump from 0x0 still in NAND/NOR
+	@b udef_excp @ Vector 4: Undefined instruction exception, relative jump from 0x2 still in NAND/NOR
+	@ldr pc,= udef_excp @ Vector 4: Undefined instruction exception, absolute jump SDRAM
+											@ GCC may put PC->ADDx(halt)->udef_excp, ADDx may be located nearly out-of-bounds >=4KB
+	ldr pc, vector_base_udef_excp @ Vector 4: Undefined instruction exception, absolute jump to SDRAM, udef_excp=0x3000XXXX
+	ldr pc, vector_base_SWI_excp  @ Vector 8: Undefined instruction exception, absolute jump to SDRAM, SWI_excp=0x3000XXXX
+	b halt 												@ Vector 12/0xc: Abort (prefetch)
+	b halt 												@ Vector 16/0x10: Abort (data)
+	b halt 												@ Vector 20/0x14: Reserved
+	ldr pc, vector_base_IRQ			  @ Vector 24/0x18: IRQ
+	b halt 												@ Vector 28/0x1C: FIQ
+
+vector_base_udef_excp: @ SDRAM optimization
+		.word udef_excp		 @ Continuous memory address <=4KB
+
+vector_base_SWI_excp:
+		.word SWI_excp
+
+vector_base_IRQ:
+		.word IRQ_handler
+
+udef_excp:
+	@ Hardare handling procedures
+	@  1. LR_und stores addr of next instruction
+	@  2. SPSR_und=CPSR
+	@  3. CPSR mode bits M[4:0]=11011
+	@  4. PC points to 0x00000004 ->udef_excp
+
+
+	@ Save  R0 ~ R12, LR to stack
+	ldr sp, =0x34000000 @ sp_und->0x4000000=67108864/1024/1024=64MB
+	stmdb sp!, {r0-r12, lr} @ Save R0 ~ R12 and lr (link register, R14) to SP=0x34000000, top of stack, decrement before
+													@ LR stores addr of next instruction, after finish handling the exception
+
+	@ Handle undefined instruction exception
+	mrs r0, cpsr @ move to ARM register from special register
+	ldr r1, =udef_excp_string
+	bl printException @ Output-> CPSR=0x600000DB M[4:0]=11011, relative jump to SDRAM
+
+	@ Recover R0 ~ R12, PC
+	ldmia sp!, {r0-r12, pc}^ @ Copy from addr SP to R0 ~ R12 and PC (program counter,R15), increment after
+													 @ PC=LR
+													 @  '^' copy SPSR back to CPSR
+	@ msr @ move to special register from ARM register
+
+udef_excp_string:
+	.string "Undefined Instruction Exception Occurred"
+	.align 4
+
+SWI_excp:
+	@ Hardare handling procedures
+	@  1. LR_svc stores addr of next instruction
+	@  2. SPSR_svc=CPSR
+	@  3. CPSR mode bits M[4:0]=10011
+	@  4. PC points to 0x00000008 ->SWI_excp
+
+	@ Save  R0 ~ R12, LR to stack
+	ldr sp, =0x33e00000 @ sp_und->0x3e0 0000=65011712/1024/1024=62MB
+	stmdb sp!, {r0-r12, lr} @ Save R0 ~ R12 and lr (link register, R14) to SP=0x33e00000,top of stack frame, decrement before
+													@ LR stores addr of next instruction, after finish handling the exception
+
+	@ Handle undefined instruction exception
+	mov r4, lr @lr, next address -> sub #4 ->SWI address
+	mrs r0, cpsr @ move to ARM register from special register
+	ldr r1, =SWI_excp_string
+	bl printException @ Output-> CPSR=0x600000D3 M[4:0]=10011, relative jump to SDRAM
+
+	sub r0, r4, #4
+	bl printSWIval @ &SWI address and mask with 0xff000000
+
+	@ Recover R0 ~ R12, PC
+	ldmia sp!, {r0-r12, pc}^ @ Copy from addr SP to R0 ~ R12 and PC (program counter,R15), increment after
+													 @ PC=LR
+													 @  '^' copy SPSR back to CPSR
+
+SWI_excp_string:
+	.string "Software Interrupt Exception Occurred"
+	.align 4
+
+
+IRQ_handler:
+	@ Hardare handling procedures
+	@  1. LR_irq stores addr of next instruction
+	@  2. SPSR_irq=CPSR
+	@  3. CPSR mode bits M[4:0]=10010
+	@  4. PC points to 0x00000018 ->IRQ
+
+
+	@ Save  R0 ~ R12, LR to stack
+	ldr sp, =0x33d00000 @ sp_und->0x3d0 0000=‭63963136‬/1024/1024=61MB
+	sub lr, lr, #4				  @ LR-4 stores addr of next instruction, after finish handling the exception
+	stmdb sp!, {r0-r12, lr} @ Save R0 ~ R12 and lr (link register, R14) to SP=0x33d00000, top of stack frame, decrement before
+
+
+	@ Handle IRQ
+	bl IRQ_handler_c @ Relative jump to IRQ_handler_c SDRAM
+
+	@ Recover R0 ~ R12, PC
+	ldmia sp!, {r0-r12, pc}^ @ Copy from addr SP to R0 ~ R12 and PC (program counter,R15), increment after
+													 @ PC=LR
+													 @  '^' copy SPSR back to CPSR
+	@ msr @ move to special register from ARM register
+
+
+reset:
+	ldr r0, =0x53000000 @  Disable watchdog timer
+	ldr r1, =0
+	str r1, [r0]
+
+
+	/*
+		MPLL, FCLK, HCLK, PCLK configuration
+		FCLK=400M, HCLK =100M, PCLK=50M
+	*/
+	ldr r0, =0x4C000000  @ Lock time
+	ldr r1, =0xFFFFFFFF
+	str r1, [r0]
+
+	ldr r0, =0x4C000014  @ CLKDIVN, tF:tH:tP=1:4:8
+	ldr r1, =0x05
+	str r1, [r0]	@ Clock divider controller 设置完成 需要设置异步模式
+
+	/*协处理器 asynchromous 设置*/
+	@  MMU_SetAsyncBusMode
+	mrc p15,0,r0,c1,c0,0
+	orr r0, r0, #0xC0000000 @ #R1_nF:OR:R1_iA
+	mcr p15,0,r0,c1,c0,0
+
+	ldr r0, =0x4C000004  @ MPLLCON, m, s p
+	ldr r1, =(92<<12)|(1<<4)|(1<<0)
+	str r1, [r0]
+
+
+
+	/*
+		分辨 NOR/NAND启动
+		NAND启动0地址对应RAM
+		NOR启动0地址对应NOR，需要特殊格式才能写入NOR
+		写0 到0地址再读出来
+		如果得到0，它对应RAM，这就是NAND启动，否则NOR
+	*/
+
+	mov r1, #0  @  r1=0
+	ldr r0, [r1]   @  r0 读出原来的0地址值备份
+	str r1, [r1]   @  r1 写0
+	ldr r2, [r1]   @  r2 读r1值
+	cmp r1, r2   @  对比r1 和r2
+	ldr sp, =0x40000000+ 4096 @  r1=!r2 NOR
+	moveq sp, #4096 @  r1==r2 NAND， 4K内存， stack pointer 指向4K
+	streq r0, [r1] @  r1==r2 恢复r0的值
+
+
+	@ Init SDRAM_init()
+	bl SDRAM_init
+
+	@ Copy .text .rodata .data to SDRAM address
+	bl copy2sdram
+
+	@ Clean/reset BSS
+	bl clean_reset_bss
+
+@After reset, 2440->SVC mode, need to switch to usr mode
+	mrs r0, cpsr         @ move to ARM register from special register, R0=CPSR
+	bic r0, r0, #0xf     @ bic, bit clean, change M[4:0] =1000 to usr mode
+	bic r0, r0, #(1<<7)  @ bic, bit clean, change M[7] =0 to enable IRQ
+	msr cpsr, r0         @ move to special register from ARM register, CPSR=R0
+
+	ldr sp, =0x33f00000 @ sp_und->0x3f0 0000=66060288/1024/1024=63MB
+
+	@ UART0 init
+	ldr pc,=uart0init @ absolute jump to SDRAM, load the address of the function label uart0init into PC
+
+uart0init:
+	bl uart0_init
+
+	bl my_printf_test1
+
+undef_code:
+	.word 0xdeadc0de @ Undefined instruction exception test
+
+	swi 0x1234 @ Trigger SWI exception go to ->0x8
+
+	bl my_printf_test2
+
+	@ bl main @ Program is still running in NOR/NAND启动
+	ldr pc, =main @ Point to SDRAM
+
+halt:
+	b halt @ 死循环
